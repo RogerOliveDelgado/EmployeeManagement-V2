@@ -1,0 +1,45 @@
+@import url(./background.css);
+@import url(./header.css);
+@import url(./dashboard.css);
+@import url(./employees.css);
+
+:root {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --base-color: rgb(100, 61, 136);
+    --base-color-green: #37FF8B;
+    --glow-color-green: #8cffbc;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #223344 0, #090a0f 100%);
+    opacity: 0;
+    animation: 1s ease-out .3s 1 transitionAnimation;
+    animation-fill-mode: forwards
+}
+
+.toast {
+    margin-top: 10px !important;
+}
+
+.quote {
+    margin-top: 2%;
+    position: relative;
+    padding-bottom: 20px;
+    color: #E6E6E6;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(90deg, #223344, #E6E6E6, #223344);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 5s linear .3s infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
