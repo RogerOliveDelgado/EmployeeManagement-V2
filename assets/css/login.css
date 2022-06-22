@@ -1,0 +1,79 @@
+@import url(./background.css);
+@import url(./loginForm.css);
+
+:root {
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+}
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at bottom, #223344 0, #090a0f 100%);
+    opacity: 0;
+    animation: 1s ease-out .3s 1 transitionAnimation;
+    animation-fill-mode: forwards
+}
+
+.h1Neon {
+    width: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.2em;
+    color: #fff;
+    text-align: center;
+    font-weight: 400;
+    font-size: 4rem;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #bc13fe,
+        0 0 82px #bc13fe,
+        0 0 92px #bc13fe,
+        0 0 102px #bc13fe,
+        0 0 151px #bc13fe;
+}
+
+.error {
+    width: 300px;
+    margin-top: 12px;
+    margin-left: 15.5%;
+    padding: 0.5em;
+    position: relative;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 30px 1px rgba(191, 123, 255, 0.5);
+    -moz-box-shadow: 0px 0px 30px 1px rgba(191, 123, 255, 0.5);
+    box-shadow: 0px 0px 30px 1px rgba(191, 123, 255, 0.5);
+}
+
+.quote {
+    margin-top: 2%;
+    position: relative;
+    padding-bottom: 20px;
+    color: #E6E6E6;
+    font-size: 1rem;
+    display: block;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(90deg, #223344, #E6E6E6, #223344);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: animate 5s linear .3s infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

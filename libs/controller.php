@@ -10,6 +10,7 @@
 
         public function view($view, $data =[]){
             $viewFile = VIEWS . $view . '.php';
+            print($viewFile);
             if(file_exists($viewFile)){
                 require_once $viewFile;
             } else {

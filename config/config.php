@@ -17,8 +17,9 @@ define("LIBS", BASE_PATH . '/libs/');
 //Database PARAMS
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASSWORD', '');
 define('DB_NAME', 'EmployeeManagementV2');
+define('CHARSET', 'utf8mb4');
 
 //Sitename
 define('SITENAME', 'Employee Management MVC');

@@ -30,7 +30,7 @@
         <div class="login-form">
             <section class="login-wrapper">
 
-                <form id="login" method="post" action="./src/library/loginController.php" autocomplete="off">
+                <form id="login" method="post" action="./login/register" autocomplete="off">
 
                     <label for="username">User Name</label>
                     <input class="username" name="username" type="text" required />

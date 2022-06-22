@@ -8,13 +8,14 @@ class App{
 
     function __construct(){
         $url = $this->getUrl();
-        // echo '<pre>';
-        // print_r($url);
-        // echo '</pre>';
+        echo '<pre>';
+        print_r($url);
+        echo '</pre>';
         $controllerPath = $this->getController($url);
         if(file_exists($controllerPath)){
             require_once $controllerPath;
             $controller = new $url[0];
+            $controller->view('login');
         }
     }
 
