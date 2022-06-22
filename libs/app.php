@@ -8,13 +8,19 @@ class App{
 
     function __construct(){
         $url = $this->getUrl();
-        echo '<pre>';
-        print_r($url);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($url);
+        // echo __FILE__;
+        // echo '</pre>';
+
         $controllerPath = $this->getController($url);
         if(file_exists($controllerPath)){
             require_once $controllerPath;
             $controller = new $url[0];
+            $controller->loadModel($url[0]);
+            if (isset($_POST['username'])){
+                $controller->addUser($_POST['username'], $_POST['password']);
+            }
             $controller->view('login');
         }
     }
@@ -24,6 +30,10 @@ class App{
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $url = explode('/', $url);
         return $url;
+    }
+
+    public function getInfoUrl($url){
+        
     }
 
     public function getController(array $url): string {
