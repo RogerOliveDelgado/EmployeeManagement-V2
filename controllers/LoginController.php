@@ -11,8 +11,9 @@ class LoginController extends Controller{
             $user = $this->model->login($_POST['username'], $_POST['password']);
         }
         if($user){
-            $this->view->render('dashboard');
+            header("Location: " . BASE_URL . "dashboard");
         } else {
+            echo "me cago en la puta migueeeeeel";
         }
     }
 

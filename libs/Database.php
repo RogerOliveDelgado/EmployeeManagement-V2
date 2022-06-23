@@ -22,12 +22,40 @@
             }
         }
 
-        public function writeQuery($sql){
+        public function query($sql){
             $this->query = $this->dbHandler->prepare($sql);
         }
 
-        public function executeQuery(){
+        public function execute(){
             return $this->query->execute();
         }
 
- }
+        public function resultSet() {
+            $this->execute();
+            return $this->query->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function single() {
+            $this->execute();
+            return $this->query->fetch(PdO::FETCH_OBJ);
+        }
+
+        public function bind($parameter, $value, $type = null){
+            switch (is_null($type)) {
+                case is_int($value):
+                    $type = PDO::PARAM_INT;
+                    break;
+                case is_bool($value):
+                    $type = PDO::PARAM_BOOL;
+                    break;
+                case is_null($value):
+                    $type = PDO::PARAM_NULL;
+                    break;
+                default:
+                    $type = PDO::PARAM_STR;
+            }
+            $this->query->bindValue($parameter, $value, $type);
+        }
+        }
+
+ 

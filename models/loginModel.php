@@ -8,7 +8,7 @@ class LoginModel extends Model{
 
     public function login($username, $password) {
         $sql = "SELECT * FROM users WHERE username = :username";
-        $this->db->writeQuery($sql);
+        $this->db->query($sql);
 
         $this->db->query->bindParam(1, $username);
         $this->db->query->execute();

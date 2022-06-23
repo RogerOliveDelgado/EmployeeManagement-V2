@@ -17,6 +17,9 @@ class App{
         }
 
         $controllerPath = $this->getController($url);
+        // echo '<pre>';
+        // print_r($url);
+        // echo '</pre>';
 
         if(file_exists($controllerPath)){
             require_once $controllerPath;

@@ -1,13 +1,34 @@
+
+const mainPath = previousFolder(previousFolder(location.pathname))
+const dashboardLoadEmployees= `${mainPath}/dashboard/getAllEmployees`
+const xxx =  "dashboard/getAllEmployees";
+
+function previousFolder(path) {
+    return path.substring(0, path.lastIndexOf('/'))
+}
+
+
 const getJSONData = async () => {
-    const url = '../resources/employees.json';
+    const url = '';
     try {
-        const rawData = await fetch(url);
-        const data = await rawData.json();
-        return data;
+        const rawData = await fetch(url)
+        const data = await rawData.text()
+        console.log(data)
+        return data
     } catch (error) {
-        alert("Error in the database");
+        alert("Error in the database")
     }
 };
+
+const getEmployees = async() => {
+    try{
+        const response = await fetch(xxx)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
 
 $("#jsGrid").jsGrid({
     width: "80%",
@@ -22,17 +43,18 @@ $("#jsGrid").jsGrid({
     deleteConfirm: "Do you really want to delete data?",
     controller: {
         /* Function to load data into the table */
-        loadData: function () {
-            var d = $.Deferred();
-            return $.ajax({
-                url: "../resources/employees.json",
-                type: "GET",
-                dataType: "json",
-                success: function (data) {
-                    return d.resolve(data);
-                },
-            });
-        },
+        // loadData: function () {
+        //     var d = $.Deferred();
+        //     return $.ajax({
+        //         url: xxx,
+        //         type: "GET",
+        //         dataType: "json",
+        //         success: function (data) {
+        //             return d.resolve(data);
+        //         },
+        //     });
+        // },
+        loadData: getEmployees,
         /* Function to add a new employee */
         insertItem: async function (item) {
             let d = $.Deferred();
