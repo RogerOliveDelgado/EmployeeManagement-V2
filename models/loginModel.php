@@ -1,17 +1,25 @@
 <?php
 
-class loginModel extends Model{
+class LoginModel extends Model{
 
     public function __construct(){
         parent::__construct();
     }
 
-    public function addUser($username, $password) {
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+    public function login($username, $password) {
+        $sql = "SELECT * FROM users WHERE username = :username";
         $this->db->writeQuery($sql);
+
         $this->db->query->bindParam(1, $username);
-        $this->db->query->bindParam(2, $password);
-        $this->db->executeQuery();
+        $this->db->query->execute();
+        $user = $this->db->query->fetch(PDO::FETCH_OBJ);
+        
+        if (password_verify($password, $user->password)){
+            return $user;
+        } else {
+            return false;
+        }
+
     }
 
 }

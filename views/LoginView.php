@@ -16,8 +16,8 @@
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo constant('BASE_URL')?>assets/css/login.css">
-    <script type="module" src="<?php echo constant('BASE_URL')?>assets/js/showPass.js"></script>
+    <link rel="stylesheet" href="<?=LOGIN_CSS?>">
+    <script type="module" src="<?=SHOWPASS_JS?>"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
         <div class="login-form">
             <section class="login-wrapper">
 
-                <form id="login" method="post" action="<?php echo constant('BASE_URL')?>login/register" autocomplete="off">
+                <form id="login" method="post" action="<?php echo constant('BASE_URL')?>login/authUser" autocomplete="off">
 
                     <label for="username">User Name</label>
                     <input class="username" name="username" type="text" required />

@@ -8,20 +8,27 @@ class App{
 
     function __construct(){
         $url = $this->getUrl();
-        // echo '<pre>';
-        // print_r($url);
-        // echo __FILE__;
-        // echo '</pre>';
+
+        if(empty($url[0])){
+            require_once LOGIN_CONTROLLER;
+            $controller = new LoginController;
+            $controller->render();
+            return false;
+        }
 
         $controllerPath = $this->getController($url);
+
         if(file_exists($controllerPath)){
             require_once $controllerPath;
-            $controller = new $url[0];
+            $class = $url[0] . "Controller";
+            $controller = new $class;
             $controller->loadModel($url[0]);
-            if (isset($_POST['username'])){
-                $controller->addUser($_POST['username'], $_POST['password']);
-            }
-            $controller->view('login');
+            $nparams = count($url);
+            $this->callController($url, $nparams, $controller);
+            
+        } else {
+            require_once FAILURE_CONTROLLER;
+            $controller = new FailureController;
         }
     }
 
@@ -32,12 +39,27 @@ class App{
         return $url;
     }
 
-    public function getInfoUrl($url){
+    public function callController($url, $nparams, $controller){
+        switch($nparams){
+            case 1: 
+                $controller->view->render($url[0]);
+                break;
+            case 2:
+                $controller->{$url[1]}();
+                break;
+            default:
+                $params = [];
+                for ($i = 2; $i < $nparams; $i++){
+                    array_push($params, $url[$i]);
+                }
+                $controller->{$url[1]}($params);
+                break;
+        }
         
     }
 
     public function getController(array $url): string {
-        return CONTROLLERS . ucwords($url[0]) . '.php';
+        return CONTROLLERS . ucwords($url[0]) . 'Controller.php';
     }
 
 }

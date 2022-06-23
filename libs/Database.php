@@ -1,12 +1,5 @@
 <?php
 
-//Database PARAMS
-// define('DB_HOST', 'localhost');
-// define('DB_USER', 'root');
-// define('DB_PASSWORD', '');
-// define('DB_NAME', 'EmployeeManagementV2');
-// define('CHARSET', 'utf8mb4');
-
  class Database{
 
         public $query;
@@ -38,17 +31,3 @@
         }
 
  }
-
-
- //prueba de que puedo escribir información en la base de datos
-//  $db = new Database;
-
-//  $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-//  $db->writeQuery($sql);
-//  $name = "manolo";
-//  $password = "123456";
-//  $db->query->bindParam(1, $name);
-//  $db->query->bindParam(2, $password);
-//  $db->executeQuery();
-
-//  echo 'Final de la ejecución';
