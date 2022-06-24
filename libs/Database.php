@@ -1,5 +1,6 @@
 <?php
 
+
  class Database{
 
         public $query;
@@ -37,7 +38,7 @@
 
         public function single() {
             $this->execute();
-            return $this->query->fetch(PdO::FETCH_OBJ);
+            return $this->query->fetch(PDO::FETCH_OBJ);
         }
 
         public function bind($parameter, $value, $type = null){
@@ -54,8 +55,6 @@
                 default:
                     $type = PDO::PARAM_STR;
             }
-            $this->query->bindValue($parameter, $value, $type);
+            $this->query->bindParam($parameter, $value, $type);
         }
-        }
-
- 
+}

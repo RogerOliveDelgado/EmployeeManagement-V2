@@ -13,7 +13,7 @@ class LoginController extends Controller{
         if($user){
             header("Location: " . BASE_URL . "dashboard");
         } else {
-            echo "me cago en la puta migueeeeeel";
+            echo "migueeeel";
         }
     }
 
