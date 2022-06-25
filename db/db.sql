@@ -18,8 +18,8 @@ CREATE TABLE `employees` (
     `city` varchar(25) DEFAULT NULL,
     `state` varchar(25) DEFAULT NULL,
     `postalcode` MEDIUMINT DEFAULT NULL,
-    `phonenumber` INT(11) DEFAULT NULL,
-)
+    `phonenumber` INT(11) DEFAULT NULL
+);
 
 INSERT INTO users (username, password) VALUES ("Roger", "$2y$10$3t5u3NQYvHJjY0TIuijoKuW62XS70.mAcxOrXE1KeP0rd3.CeRnz6");--password: 123456--
 

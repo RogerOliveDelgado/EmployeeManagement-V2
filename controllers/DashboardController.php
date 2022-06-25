@@ -11,8 +11,17 @@
             print_r(json_encode(($employees)));
         }
 
-        public function render(){
-            $this->view->render("dashboard");
+        public function deleteEmployee($id){
+            
         }
+
+        public function showEmployee($params){
+            $employee = $this->model->getEmployee($params[0]);
+            $this->view('employee');
+        }
+
+        // public function render(){
+        //     $this->view->render("dashboard");
+        // }
 
     }

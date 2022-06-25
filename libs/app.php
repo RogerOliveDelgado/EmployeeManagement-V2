@@ -2,24 +2,24 @@
 
 class App{
 
-    protected $currentController = 'login';
-    protected $currentMethod = 'index';
-    protected $params = [];
+    // protected $currentController = 'login';
+    // protected $currentMethod = '';
+    // protected $params = [];
 
     function __construct(){
+
         $url = $this->getUrl();
 
         if(empty($url[0])){
             require_once LOGIN_CONTROLLER;
             $controller = new LoginController;
-            $controller->render();
+            $controller->view('login');
             return false;
         }
 
+        $this->verifySession();
+
         $controllerPath = $this->getController($url);
-        // echo '<pre>';
-        // print_r($url);
-        // echo '</pre>';
 
         if(file_exists($controllerPath)){
             require_once $controllerPath;
@@ -28,7 +28,7 @@ class App{
             $controller->loadModel($url[0]);
             $nparams = count($url);
             $this->callController($url, $nparams, $controller);
-            
+
         } else {
             require_once FAILURE_CONTROLLER;
             $controller = new FailureController;
@@ -63,6 +63,13 @@ class App{
 
     public function getController(array $url): string {
         return CONTROLLERS . ucwords($url[0]) . 'Controller.php';
+    }
+
+    public function verifySession() {
+        if(isset($_SESSION['init'])){
+            print_r($_SESSION);
+            echo "Verifying that session is still alive";
+        }
     }
 
 }

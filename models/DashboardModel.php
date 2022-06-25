@@ -12,8 +12,17 @@
             $this->db->query('SELECT * FROM employees');
 
             try{
-                $employees = $this->db->resultSet();
-                return $employees;
+                return $this->db->resultSet();
+            } catch (PDOException $e) {
+                return [];
+            }
+        }
+
+        public function getEmployee($id) {
+            $this->db->query('SELECT * from employees WHERE id = ?;');
+            $this->db->bind(1, $id);
+            try{
+                 return $this->db->single();
             } catch (PDOException $e) {
                 return [];
             }
@@ -22,11 +31,11 @@
         public function insertEmployee($employee){
             $this->db->query('INSERT INTO employees (name, email, age, streetadress, city, state, postalcode, phonenumber) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?);');
-            for($i= 1; $i<=count($employee); $i++){
+            for($i= 1; $i<=count($employee); $i++){ //implement in db class
                 $this->db->bind($i, $employee[$i-1]);
             }
             try{
-                $this->db->execute();
+                $this->db->execute(); //need to rewrite
                 return [true];
             } catch (PDOException $e){
                 return [false, $e];

@@ -1,6 +1,6 @@
 
-const mainPath = previousFolder(previousFolder(location.pathname))
-const dashboardLoadEmployees= `${mainPath}/dashboard/getAllEmployees`
+// const mainPath = previousFolder(previousFolder(location.pathname))
+// const dashboardLoadEmployees= `${mainPath}/dashboard/getAllEmployees`
 const xxx =  "dashboard/getAllEmployees";
 
 function previousFolder(path) {
@@ -88,7 +88,7 @@ $("#jsGrid").jsGrid({
         deleteItem: function (item) {
             return $.ajax({
                 type: "DELETE",
-                url: "./library/employeeController.php",
+                url: `dashboard/deleteEmployee/${item.id}`,
                 data: item,
             }).done(function () {
                 console.log("data deleted");
@@ -178,8 +178,8 @@ $("#jsGrid").jsGrid({
         },
     ],
     /* Redirects to the employee page with the employee's data. */
-    rowClick: function (employeeId) {
-        location.href = "./employee.php?employee=" + employeeId.item.id;
+    rowClick: function (data) {
+        location.href = `dashboard/showEmployee/${data.item.id}`;
     },
     /* Redirects to the employee page with the employee's data. */
     onItemUpdated: function () {

@@ -1,11 +1,3 @@
-<!-- TODO Application entry point. Login view -->
-<?php
-
-// require_once("./src/library/sessionHelper.php");
-
-// checkSessionToDashboard();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +33,8 @@
                     <i id="togglePassword" class="far fa-eye"></i>
 
                     <button type="submit">Sign In</button>
+                    <!-- <div class="error"><?=$data['usernameMessage']?></div>
+                    <div class="error"><?=$data['passwordMessage']?></div> -->
                     <?php
                     // if (isset($_GET['status']) && $_GET['status'] === "loggedOut") {
                     //     echo "<div class='error'>Successfully logged out, we hope to see you again soon</div>";
