@@ -66,9 +66,15 @@ class App{
     }
 
     public function verifySession() {
+        session_start();
         if(isset($_SESSION['init'])){
-            print_r($_SESSION);
-            echo "Verifying that session is still alive";
+            $incr = time() - $_SESSION['init'];
+            // echo "Time after we logged in " . $incr . " seconds";
+            if($incr > 500){
+                // echo "   You should be logged out";
+            } else {
+                // echo "   You should continue using the app";
+            }
         }
     }
 

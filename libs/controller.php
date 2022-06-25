@@ -19,7 +19,6 @@
 
         public function view($view, $data =[]){
             $viewFile = VIEWS . ucwords($view) . 'View.php';
-            echo $viewFile;
             if(file_exists($viewFile)){
                 require_once $viewFile;
             } else {

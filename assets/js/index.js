@@ -23,7 +23,8 @@ const getJSONData = async () => {
 const getEmployees = async() => {
     try{
         const response = await fetch(xxx)
-        const data = await response.json()
+        const data = await response.text()
+        console.log(data)
         return data
     } catch (error) {
         console.error(error)

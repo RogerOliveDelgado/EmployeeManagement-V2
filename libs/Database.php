@@ -42,7 +42,6 @@
         }
 
         public function bind($parameter, $value, $type = null){
-            echo $parameter . " " . $value . " ";
             switch (is_null($type)) {
                 case is_int($value):
                     $type = PDO::PARAM_INT;

@@ -42,27 +42,27 @@
     
         <form method="POST" action="./library/employeeController.php" class="employee-form" autocomplete="off">
             <div class="form-row">
-                <input type="hidden" name="id" id="id" class="d-none" value=<?= isset($_GET['employee']) ? $currentEmployee["id"] : "" ?>>
+                <input type="hidden" name="id" id="id" class="d-none" value=<?= isset($data->id) ? $data->id : "" ?>>
                 <input type="hidden" name="avatar-field" id="avatar-field" class="d-none">
                 <div>
                     <label for="name">Name</label>
-                    <input class="form-input" type="text" name="name" id="name" required value=<?= isset($_GET['employee']) ? $currentEmployee["name"] : "" ?>>
+                    <input class="form-input" type="text" name="name" id="name" required value=<?= isset($data->name) ? $data->name : "" ?>>
                 </div>
                 <div>
                     <label for="last-name">Last Name</label>
-                    <input class="form-input" type="text" name="lastName" id="lastName" required value=<?= isset($currentEmployee["lastName"]) ? $currentEmployee["lastName"] : "" ?>>
+                    <input class="form-input" type="text" name="lastName" id="lastName" required value=<?= isset($data->lastName) ? $data["lastName"] : "" ?>>
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="email-address">Email address</label>
-                    <input class="form-input" type="email" name="email" id="email" required value=<?= isset($_GET['employee']) ? $currentEmployee["email"] : "" ?>>
+                    <input class="form-input" type="email" name="email" id="email" required value=<?= isset($data->email) ? $data->email : "" ?>>
                 </div>
                 <div>
                     <label for="gender">Gender</label>
                     <select class="form-input" name="gender" id="gender">
-                        <option><?= isset($_GET['employee']) ? ucfirst($currentEmployee["gender"]) : "" ?></option>
-                        <option <?= isset($_GET['employee']) ? "" : "selected" ?>>Man</option>
+                        <option><?= isset($data->employee) ? ucfirst($data->gender) : "" ?></option>
+                        <option <?= isset($data->employee) ? "" : "selected" ?>>Man</option>
                         <option>Woman</option>
                     </select>
                 </div>
@@ -70,38 +70,38 @@
             <div class="form-row">
                 <div>
                     <label for="city">City</label>
-                    <input class="form-input" type="text" name="city" id="city" required value=<?= isset($_GET['employee']) ? $currentEmployee["city"] : "" ?>>
+                    <input class="form-input" type="text" name="city" id="city" required value=<?= isset($data->city) ? $data->city : "" ?>>
                 </div>
                 <div>
                     <label for="street-address">Street Address</label>
-                    <input class="form-input" type="number" name="streetAddress" id="streetAddress" required value=<?= isset($_GET['employee']) ? $currentEmployee["streetAddress"] : "" ?>>
+                    <input class="form-input" type="number" name="streetAddress" id="streetAddress" required value=<?= isset($data->streetadress) ? $data->streetadress : "" ?>>
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="state">State</label>
-                    <input class="form-input" type="text" name="state" id="state" required value=<?= isset($_GET['employee']) ? $currentEmployee["state"] : "" ?>>
+                    <input class="form-input" type="text" name="state" id="state" required value=<?= isset($data->state) ? $data->state : "" ?>>
                 </div>
                 <div>
                     <label for="age">Age</label>
-                    <input class="form-input" type="number" name="age" id="age" required value=<?= isset($_GET['employee']) ? $currentEmployee["age"] : "" ?>>
+                    <input class="form-input" type="number" name="age" id="age" required value=<?= isset($data->age) ? $data->age : "" ?>>
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="postal-code">Postal Code</label>
-                    <input class="form-input" type="number" name="postalCode" id="postalCode" required value=<?= isset($_GET['employee']) ? $currentEmployee["postalCode"] : "" ?>>
+                    <input class="form-input" type="number" name="postalCode" id="postalCode" required value=<?= isset($data->postalcode) ? $data->postalcode : "" ?>>
                 </div>
                 <div>
                     <label for="phone-number">Phone Number</label>
-                    <input class="form-input" type="number" name="phoneNumber" id="phoneNumber" required value=<?= isset($_GET['employee']) ? $currentEmployee["phoneNumber"] : "" ?>>
+                    <input class="form-input" type="number" name="phoneNumber" id="phoneNumber" required value=<?= isset($data->phonenumber) ? $data->phonenumber : "" ?>>
                 </div>
             </div>
             <div class="btn-container">
                 <button id="editBtn" type="submit" class="btn-submit">
-                    <span><?= isset($_GET['employee']) ? "Edit" : "Submit" ?></span><i></i>
+                    <span><?= isset($data->employee) ? "Edit" : "Submit" ?></span><i></i> <!--Need to redefine it other way-->
                 </button>
-                <a href="./dashboard.php" class="btn-return">
+                <a href="<?=BASE_URL . 'dashboard';?>" class="btn-return">
                     <span>Return</span><i></i>
                 </a>
             </div>

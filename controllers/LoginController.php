@@ -11,11 +11,10 @@ class LoginController extends Controller{
             'title' => 'Login page',
             'username' => '',
             'password' => '',
-            'usernameError' => '',
-            'passwordError' => ''
+            'usernameMsg' => '',
+            'passwordMsg' => ''
         ];
 
-        echo "chequendo el request method";
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             $_POST = filter_input_array(INPUT_POST);
@@ -26,7 +25,6 @@ class LoginController extends Controller{
                 'usernameMessage' => '',
                 'passwordMessage' => '',
             ];
-            print_r($data);
 
             if (empty($data['username'])){
                 $data['usernameMessage'] = 'Please enter a username';

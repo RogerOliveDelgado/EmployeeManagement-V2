@@ -17,7 +17,7 @@
 
         public function showEmployee($params){
             $employee = $this->model->getEmployee($params[0]);
-            $this->view('employee');
+            $this->view('employee', $employee);
         }
 
         // public function render(){
