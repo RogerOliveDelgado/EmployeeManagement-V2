@@ -40,7 +40,17 @@
             } catch (PDOException $e){
                 return [false, $e];
             }
+        }
 
+        public function deleteEmployee($id){
+            $this->db->query('DELETE from employees where id = ?;');
+            $this->db->bind(1, $id);
+            try {
+                $this->db->execute();
+                return [true];
+            } catch (PDOException $e) {
+                return [false, $e];
+            }
         }
 
     }
@@ -53,5 +63,8 @@
 // define('CHARSET', 'utf8mb4');
 
 // $object = new DashboardModel;
-// $employee = array("Roger", "logic@king.com", 28, "C/Street", "Barcelona", "Spain", 8999, 515145654);
-// $object->insertEmployee($employee);
+// $result = $object->deleteEmployee(10);
+// echo "The result is <br>";
+// echo '<pre>';
+// print_r($result);
+// echo '</pre>';

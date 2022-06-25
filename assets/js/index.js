@@ -1,7 +1,7 @@
 
 // const mainPath = previousFolder(previousFolder(location.pathname))
 // const dashboardLoadEmployees= `${mainPath}/dashboard/getAllEmployees`
-const xxx =  "dashboard/getAllEmployees";
+const getAllEmployeesUrl =  "dashboard/getAllEmployees";
 
 function previousFolder(path) {
     return path.substring(0, path.lastIndexOf('/'))
@@ -22,10 +22,19 @@ const getJSONData = async () => {
 
 const getEmployees = async() => {
     try{
-        const response = await fetch(xxx)
-        const data = await response.text()
-        console.log(data)
+        const response = await fetch(getAllEmployeesUrl)
+        const data = await response.json()
         return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+const deleteEmployee = async(item) => {
+    try{
+        const response = await fetch(`dashboard/deleteEmployee/${item.id}`)
+        const data = await response.text();
+        console.log(data)
     } catch (error) {
         console.error(error)
     }
@@ -43,20 +52,9 @@ $("#jsGrid").jsGrid({
     pageButtonCount: 5,
     deleteConfirm: "Do you really want to delete data?",
     controller: {
-        /* Function to load data into the table */
-        // loadData: function () {
-        //     var d = $.Deferred();
-        //     return $.ajax({
-        //         url: xxx,
-        //         type: "GET",
-        //         dataType: "json",
-        //         success: function (data) {
-        //             return d.resolve(data);
-        //         },
-        //     });
-        // },
+        
         loadData: getEmployees,
-        /* Function to add a new employee */
+        
         insertItem: async function (item) {
             let d = $.Deferred();
             let res = await getJSONData();
@@ -85,16 +83,8 @@ $("#jsGrid").jsGrid({
                 },
             });
         },
-        /* Function to delete an employee's data */
-        deleteItem: function (item) {
-            return $.ajax({
-                type: "DELETE",
-                url: `dashboard/deleteEmployee/${item.id}`,
-                data: item,
-            }).done(function () {
-                console.log("data deleted");
-            });
-        },
+
+        deleteItem : deleteEmployee,
     },
     fields: [{
             name: "id",

@@ -9,6 +9,9 @@ class App{
     function __construct(){
 
         $url = $this->getUrl();
+        // echo '<pre>';
+        // print_r($url);
+        // echo '</pre>';
 
         if(empty($url[0])){
             require_once LOGIN_CONTROLLER;

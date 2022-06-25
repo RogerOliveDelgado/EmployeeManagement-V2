@@ -11,8 +11,8 @@
             print_r(json_encode(($employees)));
         }
 
-        public function deleteEmployee($id){
-            
+        public function deleteEmployee($params){
+            $this->model->deleteEmployee($params[0]);
         }
 
         public function showEmployee($params){
