@@ -19,7 +19,7 @@ class App{
             $controller->view('login');
             return false;
         }
-
+       
         $this->verifySession();
 
         $controllerPath = $this->getController($url);
@@ -72,12 +72,11 @@ class App{
         session_start();
         if(isset($_SESSION['init'])){
             $incr = time() - $_SESSION['init'];
-            // echo "Time after we logged in " . $incr . " seconds";
-            if($incr > 500){
-                // echo "   You should be logged out";
-            } else {
-                // echo "   You should continue using the app";
-            }
+            if($incr > 600){
+                header("Location: " . BASE_URL . "login/logout");
+            } 
+        } else {
+            header("Location: " . BASE_URL . "login/logout");
         }
     }
 

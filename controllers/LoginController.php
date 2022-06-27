@@ -42,7 +42,6 @@ class LoginController extends Controller{
                 } else {
                     $data['passwordMsg'] = 'Invalid username or password. Please try again';
                 }
-
             }
 
         } else {
@@ -66,11 +65,25 @@ class LoginController extends Controller{
     public function logout() {
         unset($_SESSION['username']);
         unset($_SESSION['init']);
+        $this->destroySessionCookie();
         header("Location: " . BASE_URL);
     }
 
-    public function render(){
-        $this->view->render('login');
+    public function destroySessionCookie() {
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params["path"],
+                $params["domain"],
+                $params["secure"],
+                $params["httponly"]
+            );
+        }
     }
+
+
 
 }
