@@ -40,6 +40,115 @@ const deleteEmployee = async(item) => {
     }
 }
 
+const configFields = [{
+    name: "id",
+    title: "ID",
+},
+{
+    name: "name",
+    title: "Name",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 35,
+    validate: "required",
+},
+{
+    name: "lastname",
+    title: "Lastname",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 35,
+    validate: "required",
+},
+{
+    name: "email",
+    title: "Email",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 75,
+    validate: "required",
+},
+{
+    name: "gender",
+    title: "Gender",
+    type: "select",
+    items: [
+        {name: '', id: ''},
+        {name: "male", id: "male"},
+        {name: "female", id: "female"}
+    ],
+    headercss: "table-header",
+    css: "table-row",
+    selectedIndex: -1,
+    valueField: "id",
+    textField: "name",
+    validate: "required",
+    width: 30
+},
+{
+    name: "age",
+    title: "Age",
+    type: "number",
+    headercss: "table-header",
+    css: "table-row",
+    width: 20,
+    validate: function (age) {
+        if (age > 0) {
+            return true;
+        }
+    },
+},
+{
+    name: "streetAddress",
+    title: "Street address",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 25,
+},
+{
+    name: "city",
+    title: "City",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 60,
+},
+{
+    name: "state",
+    title: "State",
+    type: "text",
+    headercss: "table-header",
+    css: "table-row",
+    width: 20,
+},
+{
+    name: "postalCode",
+    title: "Postal code",
+    type: "number",
+    headercss: "table-header",
+    css: "table-row",
+    width: 30,
+},
+{
+    name: "phoneNumber",
+    title: "Phone number",
+    type: "number",
+    headercss: "table-header",
+    css: "table-row",
+    width: 45,
+},
+{
+    type: "control",
+    headercss: "table-header",
+    css: "table-row",
+
+},
+]
+
 $("#jsGrid").jsGrid({
     width: "80%",
     height: "auto",
@@ -86,88 +195,7 @@ $("#jsGrid").jsGrid({
 
         deleteItem : deleteEmployee,
     },
-    fields: [{
-            name: "id",
-            title: "ID",
-        },
-        {
-            name: "name",
-            title: "Name",
-            type: "text",
-            headercss: "table-header",
-            css: "table-row",
-            width: 35,
-            validate: "required",
-        },
-        {
-            name: "email",
-            title: "Email",
-            type: "text",
-            headercss: "table-header",
-            css: "table-row",
-            width: 75,
-            validate: "required",
-        },
-        {
-            name: "age",
-            title: "Age",
-            type: "number",
-            headercss: "table-header",
-            css: "table-row",
-            width: 20,
-            validate: function (age) {
-                if (age > 0) {
-                    return true;
-                }
-            },
-        },
-        {
-            name: "streetAddress",
-            title: "Street address",
-            type: "text",
-            headercss: "table-header",
-            css: "table-row",
-            width: 25,
-        },
-        {
-            name: "city",
-            title: "City",
-            type: "text",
-            headercss: "table-header",
-            css: "table-row",
-            width: 60,
-        },
-        {
-            name: "state",
-            title: "State",
-            type: "text",
-            headercss: "table-header",
-            css: "table-row",
-            width: 20,
-        },
-        {
-            name: "postalCode",
-            title: "Postal code",
-            type: "number",
-            headercss: "table-header",
-            css: "table-row",
-            width: 30,
-        },
-        {
-            name: "phoneNumber",
-            title: "Phone number",
-            type: "number",
-            headercss: "table-header",
-            css: "table-row",
-            width: 45,
-        },
-        {
-            type: "control",
-            headercss: "table-header",
-            css: "table-row",
-
-        },
-    ],
+    fields: configFields,
     /* Redirects to the employee page with the employee's data. */
     rowClick: function (data) {
         location.href = `dashboard/showEmployee/${data.item.id}`;
