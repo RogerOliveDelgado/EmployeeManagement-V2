@@ -60,7 +60,7 @@ const configFields = [{
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 35,
+    width: 40,
     validate: "required",
 },
 {
@@ -69,7 +69,7 @@ const configFields = [{
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 35,
+    width: 40,
     validate: "required",
 },
 {
@@ -78,7 +78,7 @@ const configFields = [{
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 75,
+    width: 70,
     validate: "required",
 },
 {
@@ -96,7 +96,7 @@ const configFields = [{
     valueField: "id",
     textField: "name",
     validate: "required",
-    width: 30
+    width: 40
 },
 {
     name: "age",
@@ -104,7 +104,7 @@ const configFields = [{
     type: "number",
     headercss: "table-header",
     css: "table-row",
-    width: 20,
+    width: 25,
     validate: function (age) {
         if (age > 0) {
             return true;
@@ -112,12 +112,12 @@ const configFields = [{
     },
 },
 {
-    name: "streetAddress",
+    name: "streetaddress",
     title: "Street address",
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 25,
+    width: 75,
 },
 {
     name: "city",
@@ -125,7 +125,7 @@ const configFields = [{
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 60,
+    width: 40,
 },
 {
     name: "state",
@@ -133,10 +133,10 @@ const configFields = [{
     type: "text",
     headercss: "table-header",
     css: "table-row",
-    width: 20,
+    width: 35,
 },
 {
-    name: "postalCode",
+    name: "postalcode",
     title: "Postal code",
     type: "number",
     headercss: "table-header",
@@ -144,7 +144,7 @@ const configFields = [{
     width: 30,
 },
 {
-    name: "phoneNumber",
+    name: "phonenumber",
     title: "Phone number",
     type: "number",
     headercss: "table-header",
@@ -155,12 +155,12 @@ const configFields = [{
     type: "control",
     headercss: "table-header",
     css: "table-row",
-
+    width: 20,
 },
 ]
 
 $("#jsGrid").jsGrid({
-  width: "80%",
+  width: "85%",
   height: "auto",
   inserting: true,
   editing: true,

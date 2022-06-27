@@ -55,17 +55,19 @@
         }
 
         public function updateEmployee($employee){
-            $this->db->query('UPDATE employees SET name = ? , email = ? , age = ?, streetadress=? , city = ?, state = ?, postalcode = ?, phonenumber = ? 
+            $this->db->query('UPDATE employees SET name = ? , lastname = ? ,email = ? , age = ?, gender=?, streetaddress=? , city = ?, state = ?, postalcode = ?, phonenumber = ? 
             where id = ?');
                 $this->db->bind(1, $employee['name']);
-                $this->db->bind(2, $employee['email']);
-                $this->db->bind(3, $employee['age']);
-                $this->db->bind(4, $employee['streetAddress']);
-                $this->db->bind(5, $employee['city']);
-                $this->db->bind(6, $employee['state']);
-                $this->db->bind(7, $employee['postalcode']);
-                $this->db->bind(8, $employee['phonenumber']);
-                $this->db->bind(9, $employee["id"]);
+                $this->db->bind(2, $employee['lastname']);
+                $this->db->bind(3, $employee['email']);
+                $this->db->bind(4, $employee['age']);
+                $this->db->bind(5, $employee['gender']);
+                $this->db->bind(6, $employee['streetaddress']);
+                $this->db->bind(7, $employee['city']);
+                $this->db->bind(8, $employee['state']);
+                $this->db->bind(9, $employee['postalcode']);
+                $this->db->bind(10, $employee['phonenumber']);
+                $this->db->bind(11, $employee["id"]);
 
             try{
                 $this->db->execute(); 
