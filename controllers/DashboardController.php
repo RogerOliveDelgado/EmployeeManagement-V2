@@ -20,6 +20,15 @@
             $this->view('employee', $employee);
         }
 
+        public function updateEmployee(){
+           
+            $employee = json_decode(file_get_contents('php://input'), true);
+
+            print_r($employee);
+            $this->model->updateEmployee($employee);
+
+        }
+
         // public function render(){
         //     $this->view->render("dashboard");
         // }
