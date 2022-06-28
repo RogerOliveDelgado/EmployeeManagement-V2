@@ -1,14 +1,14 @@
 <header>
     <nav class="navbar navbar-expand-lg main-header">
         <div class="container-fluid">
-            <a class="logo-btn" data-text="Awesome" href="./dashboard.php">
+            <a class="logo-btn" data-text="Awesome" href="">
                 <span class="actual-text">&nbsp;Employees Management&nbsp;</span>
                 <span class="hover-text" aria-hidden="true">&nbsp;Employees Management &nbsp;</span>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="link" href="./dashboard.php">
+                        <a class="link" href="<?=BASE_URL?>/dashboard">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="link" href="./employee.php">
+                        <a class="link" href="<?=BASE_URL?>/dashboard/employees">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -33,8 +33,7 @@
                                 d="M19 7.001c0 3.865-3.134 7-7 7s-7-3.135-7-7c0-3.867 3.134-7.001 7-7.001s7 3.134 7 7.001zm-1.598 7.18c-1.506 1.137-3.374 1.82-5.402 1.82-2.03 0-3.899-.685-5.407-1.822-4.072 1.793-6.593 7.376-6.593 9.821h24c0-2.423-2.6-8.006-6.598-9.819z" />
                         </svg>
                         <span>
-                            <!-- <?php echo $_SESSION['username']; ?> -->
-                            <?php echo "Matías"; ?>
+                            <?=isset($_SESSION['username']) ? $_SESSION['username'] : "" ; ?>
                         </span>
                     </div>
                     <div class="hover-btn">

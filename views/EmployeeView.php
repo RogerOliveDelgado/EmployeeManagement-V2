@@ -14,43 +14,22 @@
     <script src="<?=INDEX_JS?>" defer></script>
 </head>
 <body>
+       <?php 
+        require_once HEADER;
+       ?>
     
     <div class="d-flex flex-column align-items-center">
     
-        <!-- <?php
-    
-        // if (isset($_GET['status']) && $_GET['status'] == "employeeUpdated") {
-        //     echo "
-        //     <div id='success' class='alert alert-success' role='alert'>
-        //     </div>";
-        // }
-    
-        // $jsonData = file_get_contents('../resources/employees.json');
-        // $data = json_decode($jsonData, true);
-    
-        // $newEmployee = end($data);
-        // $currentEmployee = [];
-    
-        // if (isset($_GET['employee'])) {
-        //     foreach ($data as $user) {
-        //         if ($user["id"] == $_GET['employee']) {
-        //             $currentEmployee = $user;
-        //         }
-        //     }
-        // }
-        ?> -->
-    
-        <form method="POST" action="./library/employeeController.php" class="employee-form" autocomplete="off">
+        <form method="POST" action="<?=BASE_URL?>/dashboard/updateEmployee" class="employee-form" autocomplete="off">
             <div class="form-row">
                 <input type="hidden" name="id" id="id" class="d-none" value=<?= isset($data->id) ? $data->id : "" ?>>
-                <input type="hidden" name="avatar-field" id="avatar-field" class="d-none">
                 <div>
                     <label for="name">Name</label>
                     <input class="form-input" type="text" name="name" id="name" required value=<?= isset($data->name) ? $data->name : "" ?>>
                 </div>
                 <div>
                     <label for="last-name">Last Name</label>
-                    <input class="form-input" type="text" name="lastName" id="lastName" required value=<?= isset($data->lastName) ? $data["lastName"] : "" ?>>
+                    <input class="form-input" type="text" name="lastname" id="lastName" required value=<?= isset($data->lastname) ? $data->lastname : "" ?>>
                 </div>
             </div>
             <div class="form-row">
@@ -62,8 +41,8 @@
                     <label for="gender">Gender</label>
                     <select class="form-input" name="gender" id="gender">
                         <option><?= isset($data->employee) ? ucfirst($data->gender) : "" ?></option>
-                        <option <?= isset($data->employee) ? "" : "selected" ?>>Man</option>
-                        <option>Woman</option>
+                        <option <?= isset($data->employee) ? "" : "selected" ?>>man</option>
+                        <option>woman</option>
                     </select>
                 </div>
             </div>
@@ -74,7 +53,7 @@
                 </div>
                 <div>
                     <label for="street-address">Street Address</label>
-                    <input class="form-input" type="number" name="streetAddress" id="streetAddress" required value=<?= isset($data->streetadress) ? $data->streetadress : "" ?>>
+                    <input class="form-input" type="text" name="streetaddress" id="streetAddress" required value=<?= isset($data->streetaddress) ? $data->streetaddress : "" ?>>
                 </div>
             </div>
             <div class="form-row">
@@ -90,18 +69,18 @@
             <div class="form-row">
                 <div>
                     <label for="postal-code">Postal Code</label>
-                    <input class="form-input" type="number" name="postalCode" id="postalCode" required value=<?= isset($data->postalcode) ? $data->postalcode : "" ?>>
+                    <input class="form-input" type="number" name="postalcode" id="postalCode" required value=<?= isset($data->postalcode) ? $data->postalcode : "" ?>>
                 </div>
                 <div>
                     <label for="phone-number">Phone Number</label>
-                    <input class="form-input" type="number" name="phoneNumber" id="phoneNumber" required value=<?= isset($data->phonenumber) ? $data->phonenumber : "" ?>>
+                    <input class="form-input" type="number" name="phonenumber" id="phoneNumber" required value=<?= isset($data->phonenumber) ? $data->phonenumber : "" ?>>
                 </div>
             </div>
             <div class="btn-container">
                 <button id="editBtn" type="submit" class="btn-submit">
                     <span><?= isset($data->employee) ? "Edit" : "Submit" ?></span><i></i> <!--Need to redefine it other way-->
                 </button>
-                <a href="<?=BASE_URL . 'dashboard';?>" class="btn-return">
+                <a href="<?=BASE_URL . "/dashboard";?>" class="btn-return">
                     <span>Return</span><i></i>
                 </a>
             </div>

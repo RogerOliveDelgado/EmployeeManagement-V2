@@ -22,6 +22,7 @@ const getEmployees = async () => {
   try {
     const response = await fetch(getAllEmployeesUrl);
     const data = await response.json();
+    console.log(data)
     return data;
   } catch (error) {
     console.error(error);
@@ -39,7 +40,6 @@ const deleteEmployee = async (item) => {
 };
 
 const updateEmployee = async (item) => {
-  console.log(item);
   try {
     const response = await fetch(`dashboard/updateEmployee`, {
       method: "POST",
@@ -87,8 +87,8 @@ const configFields = [{
     type: "select",
     items: [
         {name: '', id: ''},
-        {name: "male", id: "male"},
-        {name: "female", id: "female"}
+        {name: "Man", id: "man"},
+        {name: "Woman", id: "woman"}
     ],
     headercss: "table-header",
     css: "table-row",
@@ -171,8 +171,11 @@ $("#jsGrid").jsGrid({
   pageButtonCount: 5,
   deleteConfirm: "Do you really want to delete data?",
   controller: {
+
     loadData: getEmployees,
+
     deleteItem: deleteEmployee,
+
     updateItem: updateEmployee,
 
     insertItem: async function (item) {
@@ -190,17 +193,13 @@ $("#jsGrid").jsGrid({
         },
       });
     }
-    },
+  },
     fields: configFields,
     /* Redirects to the employee page with the employee's data. */
     rowClick: function (data) {
         location.href = `dashboard/showEmployee/${data.item.id}`;
     },
-    
-  /* Redirects to the employee page with the employee's data. */
-  rowClick: function (data) {
-    location.href = `dashboard/showEmployee/${data.item.id}`;
-  },
+ 
   /* Redirects to the employee page with the employee's data. */
   onItemUpdated: function () {
     let toast = document.getElementById("update-toast");
@@ -209,6 +208,7 @@ $("#jsGrid").jsGrid({
       toast.classList.add("toast");
     }, 3000);
   },
+
   /* Displays a message when deleting employee data */
   onItemDeleted: function () {
     let toast = document.getElementById("delete-toast");

@@ -21,10 +21,17 @@
         }
 
         public function updateEmployee(){
-            $employee = json_decode(file_get_contents('php://input'), true);
+            if(isset($_POST['name'])){
+                $employee = $_POST;
+            } else {
+                $employee = json_decode(file_get_contents('php://input'), true);
+            }
             $this->model->updateEmployee($employee);
+            header("Location: " . BASE_URL . "/dashboard");
         }
 
-        
+        public function employees(){
+            $this->view('employee');
+        }
 
     }
