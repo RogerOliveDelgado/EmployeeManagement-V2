@@ -189,7 +189,7 @@ $("#jsGrid").jsGrid({
         url: "../src/library/employeeController.php",
         data: item,
         success: function (data) {
-          return d.resolve(data);
+        return d.resolve(data);
         },
       });
     }
