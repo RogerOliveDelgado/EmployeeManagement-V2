@@ -1,22 +1,8 @@
-// const mainPath = previousFolder(previousFolder(location.pathname))
-// const dashboardLoadEmployees= `${mainPath}/dashboard/getAllEmployees`
 const getAllEmployeesUrl = "dashboard/getAllEmployees";
 
 function previousFolder(path) {
   return path.substring(0, path.lastIndexOf("/"));
 }
-
-const getJSONData = async () => {
-  const url = "";
-  try {
-    const rawData = await fetch(url);
-    const data = await rawData.text();
-    console.log(data);
-    return data;
-  } catch (error) {
-    alert("Error in the database");
-  }
-};
 
 const getEmployees = async () => {
   try {

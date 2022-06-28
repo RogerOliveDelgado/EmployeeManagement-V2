@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="link" href="<?=BASE_URL?>/dashboard">
+                        <a class="link" href="<?=BASE_URL?>dashboard">
                             <span></span>
                             <span></span>
                             <span></span>
@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="link" href="<?=BASE_URL?>/dashboard/employees">
+                        <a class="link" href="<?=BASE_URL?>dashboard/employees">
                             <span></span>
                             <span></span>
                             <span></span>

@@ -43,3 +43,13 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.self{
+    align-self: center;
+}

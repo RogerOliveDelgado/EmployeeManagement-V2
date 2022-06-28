@@ -1,4 +1,3 @@
-<!-- TODO Employee view -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +16,7 @@
        <?php 
         require_once HEADER;
        ?>
+       
     
     <div class="d-flex flex-column align-items-center">
     
