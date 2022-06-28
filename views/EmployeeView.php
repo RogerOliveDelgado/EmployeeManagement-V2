@@ -20,22 +20,22 @@
     
     <div class="d-flex flex-column align-items-center">
     
-        <form method="POST" action="<?=BASE_URL?>/dashboard/updateEmployee" class="employee-form" autocomplete="off">
+        <form method="POST" action="<?= isset($data->name) ? BASE_URL . "dashboard/updateEmployee" : BASE_URL . "dashboard/insertEmployee" ?>" class="employee-form" autocomplete="off">
             <div class="form-row">
-                <input type="hidden" name="id" id="id" class="d-none" value=<?= isset($data->id) ? $data->id : "" ?>>
+                <input type="hidden" name="id" id="id" class="d-none" value="<?= isset($data->id) ? $data->id : "" ?>">
                 <div>
                     <label for="name">Name</label>
-                    <input class="form-input" type="text" name="name" id="name" required value=<?= isset($data->name) ? $data->name : "" ?>>
+                    <input class="form-input" type="text" name="name" id="name" required value="<?= isset($data->name) ? $data->name : "" ?>">
                 </div>
                 <div>
                     <label for="last-name">Last Name</label>
-                    <input class="form-input" type="text" name="lastname" id="lastName" required value=<?= isset($data->lastname) ? $data->lastname : "" ?>>
+                    <input class="form-input" type="text" name="lastname" id="lastName" required value="<?= isset($data->lastname) ? $data->lastname : "" ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="email-address">Email address</label>
-                    <input class="form-input" type="email" name="email" id="email" required value=<?= isset($data->email) ? $data->email : "" ?>>
+                    <input class="form-input" type="email" name="email" id="email" required value="<?= isset($data->email) ? $data->email : "" ?>">
                 </div>
                 <div>
                     <label for="gender">Gender</label>
@@ -49,31 +49,31 @@
             <div class="form-row">
                 <div>
                     <label for="city">City</label>
-                    <input class="form-input" type="text" name="city" id="city" required value=<?= isset($data->city) ? $data->city : "" ?>>
+                    <input class="form-input" type="text" name="city" id="city" required value="<?= isset($data->city) ? $data->city : "" ?>">
                 </div>
                 <div>
                     <label for="street-address">Street Address</label>
-                    <input class="form-input" type="text" name="streetaddress" id="streetAddress" required value=<?= isset($data->streetaddress) ? $data->streetaddress : "" ?>>
+                    <input class="form-input" type="text" name="streetaddress" id="streetAddress" required value="<?= isset($data->streetaddress) ? $data->streetaddress : "" ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="state">State</label>
-                    <input class="form-input" type="text" name="state" id="state" required value=<?= isset($data->state) ? $data->state : "" ?>>
+                    <input class="form-input" type="text" name="state" id="state" required value="<?= isset($data->state) ? $data->state : "" ?>">
                 </div>
                 <div>
                     <label for="age">Age</label>
-                    <input class="form-input" type="number" name="age" id="age" required value=<?= isset($data->age) ? $data->age : "" ?>>
+                    <input class="form-input" type="number" name="age" id="age" required value="<?= isset($data->age) ? $data->age : "" ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div>
                     <label for="postal-code">Postal Code</label>
-                    <input class="form-input" type="number" name="postalcode" id="postalCode" required value=<?= isset($data->postalcode) ? $data->postalcode : "" ?>>
+                    <input class="form-input" type="number" name="postalcode" id="postalCode" required value="<?= isset($data->postalcode) ? $data->postalcode : "" ?>">
                 </div>
                 <div>
                     <label for="phone-number">Phone Number</label>
-                    <input class="form-input" type="number" name="phonenumber" id="phoneNumber" required value=<?= isset($data->phonenumber) ? $data->phonenumber : "" ?>>
+                    <input class="form-input" type="number" name="phonenumber" id="phoneNumber" required value="<?= isset($data->phonenumber) ? $data->phonenumber : "" ?>">
                 </div>
             </div>
             <div class="btn-container">

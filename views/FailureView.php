@@ -1,4 +1,3 @@
-<!-- TODO Employee view -->
 <!DOCTYPE html>
 <html lang="en">
 

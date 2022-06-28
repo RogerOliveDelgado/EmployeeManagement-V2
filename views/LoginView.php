@@ -34,23 +34,7 @@
                     <i id="togglePassword" class="far fa-eye"></i>
 
                     <button type="submit">Sign In</button>
-                    <!-- <div class="error"><?=$data['usernameMessage']?></div>
-                    <div class="error"><?=$data['passwordMessage']?></div> -->
-                    <?php
-                    // if (isset($_GET['status']) && $_GET['status'] === "loggedOut") {
-                    //     echo "<div class='error'>Successfully logged out, we hope to see you again soon</div>";
-                    // } elseif (isset($_GET['status']) && $_GET['status'] === "sessionTimeOut") {
-                    //     echo "<div class='error'>Sorry, your session expired, please login again</div>";
-                    // }
 
-                    // if (isset($_GET['error'])) {
-                    //     if ($_GET['error'] === "password") {
-                    //         echo '<div class="error">The password is incorrect, try again</div>';
-                    //     } elseif ($_GET['error'] === "unregistered") {
-                    //         echo '<div class="error">The user is not registered</div>';
-                    //     }
-                    // }
-                    ?>
                 </form>
 
             </section>

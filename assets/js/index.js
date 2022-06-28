@@ -18,7 +18,6 @@ const deleteEmployee = async (item) => {
   try {
     const response = await fetch(`dashboard/deleteEmployee/${item.id}`);
     const data = await response.text();
-    console.log(data);
   } catch (error) {
     console.error(error);
   }
@@ -41,8 +40,6 @@ const insertEmployee = async (item) => {
       method: "POST",
       body: JSON.stringify(item),
     });
-    const data = await response.text()
-    console.log(data)
   } catch (error) {
     console.error(error);
   }
@@ -178,22 +175,6 @@ $("#jsGrid").jsGrid({
 
     insertItem: insertEmployee,
 
-
-  //   insertItem: async function (item) {
-  //     let d = $.Deferred();
-  //     let res = await getJSONData();
-  //     let newID = res[res.length - 1].id + 1;
-  //     console.log(newID);
-  //     item["id"] = newID;
-  //     return $.ajax({
-  //       type: "POST",
-  //       url: "../src/library/employeeController.php",
-  //       data: item,
-  //       success: function (data) {
-  //       return d.resolve(data);
-  //       },
-  //     });
-  //   }
   },
 
     fields: configFields,

@@ -2,16 +2,9 @@
 
 class App{
 
-    // protected $currentController = 'login';
-    // protected $currentMethod = '';
-    // protected $params = [];
-
     function __construct(){
 
         $url = $this->getUrl();
-        // echo '<pre>';
-        // print_r($url);
-        // echo '</pre>';
 
         if(empty($url[0])){
             require_once LOGIN_CONTROLLER;
@@ -51,14 +44,24 @@ class App{
                 $controller->view->render($url[0]);
                 break;
             case 2:
-                $controller->{$url[1]}();
+                if(!method_exists($controller,$url[1])){
+                    require FAILURE_CONTROLLER;
+                    $controller = new FailureController;
+                } else {
+                    $controller->{$url[1]}();
+                }
                 break;
             default:
                 $params = [];
                 for ($i = 2; $i < $nparams; $i++){
                     array_push($params, $url[$i]);
                 }
-                $controller->{$url[1]}($params);
+                if(!method_exists($controller,$url[1])){
+                    require FAILURE_CONTROLLER;
+                    $controller = new FailureController;
+                } else {
+                    $controller->{$url[1]}($params);
+                }
                 break;
         }
         
