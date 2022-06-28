@@ -30,6 +30,16 @@
             header("Location: " . BASE_URL . "/dashboard");
         }
 
+        public function insertEmployee(){
+            if(isset($_POST['name'])){
+                $employee = $_POST;
+            } else {
+                $employee = json_decode(file_get_contents('php://input'), true);
+            }
+            $this->model->insertEmployee($employee);
+            header("Location: " . BASE_URL . "/dashboard");
+        }
+
         public function employees(){
             $this->view('employee');
         }

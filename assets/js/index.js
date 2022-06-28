@@ -6,23 +6,10 @@ function previousFolder(path) {
   return path.substring(0, path.lastIndexOf("/"));
 }
 
-const getJSONData = async () => {
-  const url = "";
-  try {
-    const rawData = await fetch(url);
-    const data = await rawData.text();
-    console.log(data);
-    return data;
-  } catch (error) {
-    alert("Error in the database");
-  }
-};
-
 const getEmployees = async () => {
   try {
     const response = await fetch(getAllEmployeesUrl);
     const data = await response.json();
-    console.log(data)
     return data;
   } catch (error) {
     console.error(error);
@@ -45,6 +32,19 @@ const updateEmployee = async (item) => {
       method: "POST",
       body: JSON.stringify(item),
     });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const insertEmployee = async (item) => {
+  try {
+    const response = await fetch(`dashboard/insertEmployee`, {
+      method: "POST",
+      body: JSON.stringify(item),
+    });
+    const data = await response.text()
+    console.log(data)
   } catch (error) {
     console.error(error);
   }
@@ -178,22 +178,26 @@ $("#jsGrid").jsGrid({
 
     updateItem: updateEmployee,
 
-    insertItem: async function (item) {
-      let d = $.Deferred();
-      let res = await getJSONData();
-      let newID = res[res.length - 1].id + 1;
-      console.log(newID);
-      item["id"] = newID;
-      return $.ajax({
-        type: "POST",
-        url: "../src/library/employeeController.php",
-        data: item,
-        success: function (data) {
-        return d.resolve(data);
-        },
-      });
-    }
+    insertItem: insertEmployee,
+
+
+  //   insertItem: async function (item) {
+  //     let d = $.Deferred();
+  //     let res = await getJSONData();
+  //     let newID = res[res.length - 1].id + 1;
+  //     console.log(newID);
+  //     item["id"] = newID;
+  //     return $.ajax({
+  //       type: "POST",
+  //       url: "../src/library/employeeController.php",
+  //       data: item,
+  //       success: function (data) {
+  //       return d.resolve(data);
+  //       },
+  //     });
+  //   }
   },
+
     fields: configFields,
     /* Redirects to the employee page with the employee's data. */
     rowClick: function (data) {
@@ -216,7 +220,7 @@ $("#jsGrid").jsGrid({
     setTimeout(() => {
       toast.classList.add("toast");
     }, 3000);
-  },
+  }
 })
 
 /* Hide the id field */

@@ -29,19 +29,19 @@
             }
         }
 
-        public function insertEmployee($employee){
-            $this->db->query('INSERT INTO employees (name, email, age, streetadress, city, state, postalcode, phonenumber) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?);');
-            for($i= 1; $i<=count($employee); $i++){ //implement in db class
-                $this->db->bind($i, $employee[$i]);
-            }
-            try{
-                $this->db->execute(); //need to rewrite
-                return [true];
-            } catch (PDOException $e){
-                return [false, $e];
-            }
-        }
+        // public function insertEmployee($employee){
+        //     $this->db->query('INSERT INTO employees (name, email, age, streetadress, city, state, postalcode, phonenumber) 
+        //     VALUES (?, ?, ?, ?, ?, ?, ?, ?);');
+        //     for($i= 1; $i<=count($employee); $i++){ //implement in db class
+        //         $this->db->bind($i, $employee[$i]);
+        //     }
+        //     try{
+        //         $this->db->execute(); //need to rewrite
+        //         return [true];
+        //     } catch (PDOException $e){
+        //         return [false, $e];
+        //     }
+        // }
 
         public function deleteEmployee($id){
             $this->db->query('DELETE from employees where id = ?;');
@@ -71,6 +71,26 @@
 
             try{
                 $this->db->execute(); 
+                return [true];
+            } catch (PDOException $e){
+                return [false, $e];
+            }
+        }
+
+        public function insertEmployee($employee){
+            $this->db->query('INSERT INTO employees (name, lastnme, email, age, gender, streetaddress, city, state, postalcode, phonenumber) VALUES (?,?,?,?,?,?,?,?,?,?);');
+                $this->db->bind(1, $employee['name']);
+                $this->db->bind(2, $employee['lastnme']);
+                $this->db->bind(3, $employee['email']);
+                $this->db->bind(4, $employee['age']);
+                $this->db->bind(5, $employee['gender']);
+                $this->db->bind(6, $employee['streetaddress']);
+                $this->db->bind(7, $employee['city']);
+                $this->db->bind(8, $employee['state']);
+                $this->db->bind(9, $employee['postalcode']);
+                $this->db->bind(10, $employee['phonenumber']);
+            try{
+                $this->db->execute();
                 return [true];
             } catch (PDOException $e){
                 return [false, $e];
